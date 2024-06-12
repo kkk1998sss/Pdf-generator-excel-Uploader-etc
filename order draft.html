@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- CSS PART -->
+<style>
+    .container{
+        height: 100vh;
+    }
+    .card{
+      border-radius: 3px;
+      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.332);
+    }
+    thead {
+      background-color: rgb(109, 175, 241);
+    } 
+    .th_font {
+ 
+      background-color: rgb(109, 175, 241);
+      color: aliceblue;
+    }
+    .scheme{
+      text-align: center;
+    }
+    .table_head{
+      font-size: 20px;
+      text-align: center;
+    }
+    td { border-bottom:1px groove #339ad6; }
+    @media screen and (max-width: 600px) {
+      .th_font{
+        font-size: 15px;
+        background-color: rgb(109, 175, 241);
+        color: aliceblue;
+      }
+      .table_head{
+      font-size: 20px;
+      text-align: center;
+    }
+    }
+  .myOtherTable { width:100%;; background-color:white;border-collapse:collapse;color:#000;font-size:18px;text-align: center;border:1px groove white}
+  .myOtherTable th_font { background-color:rgb(109, 175, 241);color:white;}
+  .myOtherTable td, .myOtherTable th { padding:5px;border:0; }
+  .myOtherTable td { border-bottom:1px groove white}
+  </style>
+
+  <!-- Html PART -->
+<body>
+    <section>
+        <h1 style="color:rgb(143, 140, 140)">(Order Draft)</h1>
+        <div class="upper-section">
+          <p><b>Outlet: </b> Annapurna</p> 
+          <p><b>Phone No: </b><span id="ph_no"></span></p>
+          <p><b>Outlet Type: </b> Chemist</p>
+          <p><b>Total & GST:</b> <span id="gst"></span> <b id="item_gst"> </b> </p>
+        </div>
+        <br>
+        <hr > 
+        <h5 class="table_head">Order</h5>
+        <div class="card">
+        <table class="myOtherTable">
+          <thead class="th_font">
+            <tr >
+              <th scope="col">SKU Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Amt</th>
+              <th scope="col">GST%</th>
+              <th scope="col">Net Amt</th>
+            </tr>
+          </thead>
+          <tbody id="tableupper">
+        </tbody>
+        </table>
+    </div>
+    <h5 class="table_head">Return</h5>
+    <div class="card">
+        <table class="myOtherTable">
+          <thead class="th_font">
+            <tr >
+              <th scope="col">SKU Name</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Reson</th>
+              <th scope="col">Amt</th> 
+              <th scope="col">GST%</th>
+              <th scope="col">Net Amt</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+        </table>
+        <div class="scheme">
+            <p class=""><b>Scheme: </b> For Total Quantity <b>24</b> Scheme is 500</p>
+        </div>
+    </div>      
+      </section>  
+</body>
+<script>
+//To Display on screen
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+// credintial for API
+var raw = JSON.stringify({
+  "orderid": "3405"
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+//Data fetching from API
+fetch("https://romsons-demo.omlogistics.co.in/pdfprint",requestOptions).then(
+  res => {
+    res.json().then(
+      data => {
+        console.log(data);
+        if (data.data.length > 0) {
+          //calculation part finding GST and Adding Values
+            var NET_AMT = Int16Array;
+            var TOT_AMOUNT =Int32Array;
+            data.data.forEach(ele=> {
+                ele['NET_AMT']=(ele.order_amt/100)*ele.order_gst_amt;
+                ele['TOT_AMOUNT']=ele.NET_AMT+ele.order_amt;
+                });
+          //creating array in javascript to display all data
+          var temp = "";
+          data.data.forEach((itemData) => {
+            temp += "<tr>";
+            temp += "<td>" + itemData.item_id + "</td>";
+            temp += "<td>" + itemData.item_price_unit + "</td>";
+            temp += "<td>" + itemData.item_qty + "</td>";
+            temp += "<td>" + itemData.order_amt + "</td>";
+            temp += "<td>" + itemData.order_gst_amt.toFixed(2) +'%'+ "</td>";
+            temp += "<td>" + itemData.TOT_AMOUNT.toFixed(2) + "</td></tr>";
+        });
+        //Addition Part
+        let addqty = 0;
+        let totalaftertax = 0;
+        let NetTotal = 0;
+            data.data.forEach(el => {
+            //   console.log(el);
+              addqty +=el.item_qty;
+              NetTotal += el.TOT_AMOUNT;
+            });
+            let totalQty=addqty;
+            console.log(NetTotal);
+
+            temp += "<tr>";
+            temp += `<th>` + "Total" + "</th>"
+            temp += "<td>" + "" + "</td>"
+            temp += "<td>" + totalQty + "</td>"
+            temp += "<td>" + data.data[0].total_quantity + "</td>"
+            temp += "<td>" + "" + "</td>"
+            temp += "<th>" + NetTotal.toFixed(2) + "</th></tr>";
+
+          var temp1 = "";
+          data.data.forEach((itemData1) => {
+            temp1 += "<tr>";
+            temp1 += "<td>" + itemData1.item_id + "</td>";
+            temp1 += "<td>" + itemData1.item_price_unit + "</td>";
+            temp1 += "<td>" + itemData1.item_qty + "</td>";
+            temp1 += "<td>" + itemData1.order_amt + "</td>";
+            temp1 += "<td>" + itemData1.order_gst_amt.toFixed(2) +'%'+ "</td>";
+            temp1 += "<td>" + itemData1.TOT_AMOUNT.toFixed(2) + "</td></tr>";
+          });
+          temp1 += "<tr>";
+            temp1 += `<th>` + "Total" + "</th>"
+            temp1 += "<td>" + "" + "</td>"
+            temp1 += "<td>" + totalQty + "</td>"
+            temp1 += "<td>" + data.data[0].total_quantity + "</td>"
+            temp1 += "<td>" + "" + "</td>"
+            temp1 += "<th>" + NetTotal.toFixed(2) + "</th></tr>";
+            //DOM Selection 
+          document.getElementById('data').innerHTML = temp1;
+          document.getElementById('tableupper').innerHTML = temp;
+          document.getElementById("ph_no").innerText = data.data[0].phone_no;
+          document.getElementById("item_gst").innerText = data.data[0].total_quantity;
+        }
+      }
+    )
+
+  },
+);
+</script>
+</html>

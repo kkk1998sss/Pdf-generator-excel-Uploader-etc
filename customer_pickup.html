@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Customer Pick up Request</title>
+  </head>
+    <style>
+        .card_main {
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        .card_details{
+            padding: 10px;
+        }
+        .card_table{
+            overflow-x:auto;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        .table{
+            font-size: 11px;
+            overflow-x:auto
+        }
+        .searchin{
+          margin-left: 10px;
+        }
+
+        .kodfun-galeri{
+          display:flex;
+          height: 20rem;
+          gap: 1rem;
+        }
+        .kodfun-galeri > div {
+          flex: 1;
+          border-radius: 1rem;
+          background-position: 1rem;
+          background-repeat: no-repeat;
+          background-size: auto 100%;
+          transition: all .8s cubic-bezier(.25, .4, .45, 1.4);
+        }
+        .kodfun-galeri > div:hover{
+          flex: 5;
+        }
+        
+    </style>
+    <body>
+        
+        <!-- <div class="container"> -->
+            <div class="header text-center">
+              <h3>Customer Pick Request</h3>   
+            </div>
+           
+            <div class="card card_main">
+                <div class="row small">
+                    <div class="col">
+                        <label for="PRQ RAISED By">PRQ RAISED BY</label>
+                        <div class="card card_details">
+                            <div class="row">
+                                <div class="col ">
+                                    <label for="Employee">Select Customer ID:</label>
+                                    <div class="input-group mb-3">
+                                      <input type="text" class="form-control form-control-sm" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                      <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary btn-sm" type="button">Button</button>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="Customer">From Date:</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <label for="Customer">To Date:</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <label for="exampleFormControlSelect1">Customer Type</label>
+                                    <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                                      <option>RETAIL</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                    </select>
+                                  </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- <div class="col">
+                        <label for="EXPACTED PICKUP READINESS">EXPACTED PICKUP READINESS</label>
+                        <div class="card card_details"> 
+                        <div class="row">
+                            <div class="col">
+                                <label for="Date">Date:</label>
+                              <input type="date" class="form-control form-control-sm" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="Type">Type:</label>
+                              <input type="text" class="form-control form-control-sm" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlSelect1">Transport Mode</label>
+                                <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                                  <option>AIR</option>
+                                  <option>Sea Ways</option>
+                                  <option>Train</option>
+                                  <option>Road</option>
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="card card_table">
+                <table class="table ">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Sl No</th>
+                        <th scope="col">PICKUP REQ NO</th>
+                        <th scope="col">PICKUP LOC</th>
+                        <th scope="col">Booking Mode</th>
+                        <th scope="col">DELIVERY LOC</th>
+                        <th scope="col">DELIVERY PIN</th>
+                        <th scope="col">BUYER CONTACT NO</th>
+                        <th scope="col">PART DESC</th>
+                        <th scope="col">PICK QTY</th>
+                        <th scope="col">ACT WEIGHT</th>
+                        <th scope="col">CHARGE WEIGHT</th>
+                        <th scope="col">REQ UNAME</th>
+                        <th scope="col">CN NO</th>
+                        <th scope="col">CN UPD BY</th>
+                        <th scope="col">CN ENT BY</th>
+                        <th scope="col">PICK REQ STATUS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>mdo</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+<label for="">kundan</label>
+            <div class="kodfun-galeri">
+              <div style="background-image: url('truck.png');"></div>
+              <div style="background-image: url('truck.png');"></div>
+              <div style="background-image: url('transafe_logo.png');"></div>
+              <div style="background-image: url('truck.png');"></div>
+              <div style="background-image: url('truck.png');"></div>
+
+            </div>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

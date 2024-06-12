@@ -1,0 +1,2611 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- html2canvas library -->
+<script src="js/html2canvas.min.js"></script>
+<script src="js/jsPDF/dist/jspdf.umd.js"></script>
+<!-- jsPDF library -->
+<script src="js/jsPDF/dist/jspdf.umd.js"></script>
+
+<script>
+var doc = new jsPDF();
+	
+    doc.text(20, 20, 'This is the default font.');
+    
+    doc.setFont("courier", "normal");
+    doc.text("This is courier normal.", 20, 30);
+    
+    doc.setFont("times", "italic");
+    doc.text("This is times italic.", 20, 40);
+    
+    doc.setFont("helvetica", "bold");
+    doc.text("This is helvetica bold.", 20, 50);
+    
+    doc.setFont("courier", "bolditalic");
+    doc.text("This is courier bolditalic.", 20, 60);
+    
+    doc.setFont("times", "normal");
+    doc.text("This is centred text.", 105, 80, null, null, "center");
+    doc.text("And a little bit more underneath it.", 105, 90, null, null, "center");
+    doc.text("This is right aligned text", 200, 100, null, null, "right");
+    doc.text("And some more", 200, 110, null, null, "right");
+    doc.text("Back to left", 20, 120);
+    
+    doc.text("10 degrees rotated", 20, 140, null, 10);
+    doc.text("-10 degrees rotated", 20, 160, null, -10);
+    
+    // Save the PDF
+    doc.save('document.pdf');
+
+
+   window.jsPDF = window.jspdf.jsPDF;
+
+// Convert HTML content to PDF
+function Convert_HTML_To_PDF() {
+    var doc = new jsPDF();
+	
+    // Source HTMLElement or a string containing HTML.
+    var elementHTML = document.querySelector("#contentToPrint");
+
+    doc.html(elementHTML, {
+        callback: function(doc) {
+            // Save the PDF
+            doc.save('document-html.pdf');
+        },
+        margin: [10, 10, 10, 10],
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 190, //target width in the PDF document
+        windowWidth: 675 //window width in CSS pixels
+    });
+}
+</script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <style>
+
+
+   .containers {
+    font-size: 11px;
+   
+}
+.table-bordereded td, .table-bordereded th {
+  border: 1px solid #000000;
+}
+.img-center{
+    text-align: center;
+    margin: 0;
+}
+
+.container {
+    display: inline;
+}
+
+.shrinkss{
+  font-size: 12px;
+  padding-top: 1rem;
+  text-align: center;
+  width: 3rem;
+  vertical-align: middle;
+}
+
+.sideline{
+  font-size: 1rem;
+  border-left: 1px solid rgb(0, 0, 0);
+  height: 15rem;
+
+  
+}
+
+.table td, .table th {
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  
+}
+
+
+
+@media print
+{
+.noprint {display:none;}
+
+.page-break {page-break-before:always}
+  
+}
+
+  </style>
+  <body>
+    <button onclick="Convert_HTML_To_PDF();">Convert HTML to PDF</button>
+    <div id="contentToPrint">
+  
+        <div class="page-break">
+          <h2>CONSIGNOR COPY</h2>
+        </div>
+        
+        
+        <div class="card" style="align-items: center; border: none">
+          <img src="../../../../../../assets/retail_logo.png" width="200px" alt="" />
+        </div>
+        <div class="containers ">
+          <table class="table table-bordereded table-sm">
+            <thead class="text-center">
+              <tr>
+                <th rowspan="3" colspan="2" class="img-center">
+                  <div style="background-color: #fff799; padding: 0.8rem">
+                    <img
+                      src="../../../../../../assets/logo10.png"
+                      width="180px"
+                      alt=""
+                    />
+                  </div>
+                </th>
+                <th colspan="3">
+                  <div style="background-color: #fff799; padding: 5px">
+                    CORPORATE OFFICE
+                  </div>
+                </th>
+        
+                <th colspan="3">
+                  <div style="background-color: #fff799; padding: 5px">
+                    CONSIGNMENT NOTE
+                  </div>
+                </th>
+        
+                <th colspan="5">
+                  <div style="background-color: #fff799; padding: 5px">
+                    TRANSPORTER ID: 88AAACO4716C1ZV
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="3" rowspan="2">
+                  <div>
+                    <b> 130, Punjabi Bagh (T.C) Ring Road</b><br />
+                    <b> New Delhi-110035</b><br />
+                    <b>Phone: </b> 011-45970200<br />
+                    <b>FAX:</b> 011-283165533<br />
+                    <b>Email:</b> omgroup@omlogistics.co.in
+                  </div>
+                </th>
+                <th colspan="3" rowspan="2">
+                  <div class="img-center" style="margin: 0">
+                    <ngx-barcode
+                      [bc-value]="FreightDetails.CN_CN_NO"
+                      [bc-width]="width"
+                      [bc-height]="height"
+                      [bc-display-value]="true"
+                    ></ngx-barcode>
+                    
+                  </div>
+                </th>
+                <th colspan="3">
+                  <div>FROM: {{ CNMain.SOURCE }}</div>
+                </th>
+                <th colspan="4">
+                  <div>DATE: {{ CNMain.CNDATE }}</div>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="3">
+                  <div>TO: {{ CNMain.DESTINATION }}</div>
+                </th>
+                <th colspan="4">
+                  <div>TIME: 12.40.25 PM</div>
+                </th>
+              </tr>
+        
+              <tr>
+                <th colspan="3">
+                  <div style="background-color: #fff799">BOOKING MODE</div>
+                </th>
+                <th colspan="3">
+                  <div style="background-color: #fff799">
+                    SPECIAL DELIVERY INSTRUCTIONS
+                  </div>
+                </th>
+                <th colspan="2">
+                  <div style="background-color: #fff799">
+                    <label class="container"> AT OWNER'S RISK </label>
+                  </div>
+                </th>
+                <th colspan="5">
+                  <div style="background-color: #fff799">
+                    <label class="container">FREIGHT MODE </label>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td>
+                  <div>
+                    <label class="container">SURFACE</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_TPTR_MODE_NAME === 'Surface' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span><br />
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">AIR</label> <br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="CNMain.CN_TPTR_MODE_NAME === 'Air' ? true : null"
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">TRAIN</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_TPTR_MODE_NAME === 'Train' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">COD</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'COD' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">G.D_DLV</label>
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'Godown' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">DACC</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'Door' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+        
+                <td colspan="2">
+                  <div>
+                    <b>Subject to Delhi Jurisdiction only</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>
+                    <label class="container">PAID</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_FREIGHT_PAID_NAME === 'PREPAID' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>
+                    <label class="container"> FOD_/_TO_PAY</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO PAY' ||
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO BILL(CNR)' ||
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO BILL(CNE)'
+                          ? true
+                          : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                
+                <td rowspan="8" colspan="3" class="consignor_consiee">
+                  <div class="row">
+                    <div class="shrinkss" style="background-color: #fff799">
+                      <p>
+                        <b
+                          >S <br />
+                          H <br />
+                          I <br />
+                          P <br />
+                          P <br />
+                          E <br />
+                          R</b
+                        >
+                      </p>
+                    </div>
+                    <div class="col sideline">
+                      <div class="row">
+                        <div class="col">
+                          Consignor Code: <br />
+                          Name: <br />
+                          Address <br />
+                          City Pincode<br />
+                          Phone No.<br />
+                          GST No.<br />
+                        </div>
+                        <div class="col">
+                          {{ CNMain.CONSIGNOR }}
+                          {{ CNMain.CONSIGNOR }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+        
+                <td rowspan="8" colspan="5" class="sideline">
+                  <div class="row">
+                    <div class="shrinkss" style="background-color: #fff799">
+                      <p>
+                        <b
+                          >R <br />
+                          E <br />
+                          C <br />
+                          E <br />
+                          I <br />
+                          V <br />
+                          E <br />
+                          R</b
+                        >
+                      </p>
+                    </div>
+                    <div class="col sideline">
+                      <div class="row">
+                        <div class="col">
+                          Consignor Code: <br />
+                          Name: <br />
+                          Address <br />
+                          City Pincode<br />
+                          Phone No.<br />
+                          GST No.<br />
+                        </div>
+                        <div class="col">
+                          {{ CNMain.CONSIGNEE }}
+                          {{ CNMain.CONSIGNEE }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> FREIGHT DETAILS</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    <b> Rs</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>Freight Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_RATE_PER_KG_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>F.O.V Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_FOV_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>CN Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">200.00</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>Fuel Surcharge</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_SURCHARGE_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>ODA Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>FOD/Topay Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="3">
+                  <div>Handling Charges (Special / Floor)</div>
+                </td>
+                <td class="text-center" colspan="2"></td>
+              </tr>
+              <tr>
+                <td colspan="8" class="text-center">
+                  <div style="background-color: #fff799; padding: 7px">
+                    <b>Package Information</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>VAS/Special Delivery/Detention Charges</div>
+                </td>
+        
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+              <tr class="text-center">
+                <td colspan="1">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice No
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice Date
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice Value
+                  </div>
+                </td>
+                <td colspan="4">
+                  <div
+                    style="
+                      background-color: #fff799;
+                      text-align: center;
+                      padding-left: 0;
+                      padding-right: 0;
+                    "
+                  >
+                    <b>Packing Type</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>Other (COD/FOD)</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_COD_OTHER }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_INVOICE_NO }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="1" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_INVOICE_DATE }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_NET_VALUE }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="4" class="text-center">
+                  <div>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'CRTN_BOX' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      C/B
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'WOODEN_BOX' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      W/C
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'BAG' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      BAG
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'PALLET' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      PALLET
+                    </label>
+                    <label class="container">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                      Drum
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'OTHER' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      OTHER
+                    </label>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> SUB TOTAL</b>
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    <b> {{ FreightDetails?.CN_TOTAL | number : "1.2-2" }}</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div class="row">
+                    <div class="col">EWB No.: {{ InvoiceMain[0]?.EWAY_BILL }}</div>
+        
+                    <div class="col">
+                      Valid: {{ InvoiceMain[1]?.EWAY_BILL_VALID_DATE }}
+                    </div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.8rem">
+                    <b>MATERIAL DESCRIPTION</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ InvoiceMain[0]?.CN_ITEM_DESCRIPT }}
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>SGST@ {{ FreightDetails.CN_SGST_RATE }}</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails?.CN_SGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="2">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 0.5rem"
+                  >
+                    <b>Dimension Of Boxes</b><br />
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.CN_CFT_UNIT === 'INCHES' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      (Inch)
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.CN_CFT_UNIT === 'CENTI METER' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      (cm)
+                    </label>
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b>1 CFT =</b>
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div class="text-center">8 Kg</div>
+                </td>
+                <td colspan="4" class="text-center">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> COD Details</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>CGST@ {{ FreightDetails.CN_CGST_RATE }}</div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    {{ FreightDetails?.CN_CGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="2" rowspan="2">
+                  <div style="padding: 0.5rem">
+                    L B H = BOXES {{ InvoiceMain[0]?.CN_LENGTH }} x
+                    {{ InvoiceMain[0]?.CN_WIDTH }} x {{ InvoiceMain[0]?.CN_HEIGHT }}
+                  </div>
+                </td>
+                <td colspan="1" rowspan="2">
+                  <div style="background-color: #fff799; padding: 1.8rem">
+                    <b>TOTAL NO. OF PKG.</b>
+                  </div>
+                </td>
+                <td colspan="1" rowspan="2">
+                  <div class="text-center">
+                    {{ CNMain.PKG }}
+                  </div>
+                </td>
+                <td colspan="4" rowspan="2">
+                  <div style="padding: 0.5rem">
+                    COD RS.:<br />
+                    Bank Name: <br />
+                    BANK Account No.: <br />
+                    NEFT / RTGS Details:
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="padding: 0.5rem 0.5rem 0.5rem 0">
+                    IGST@ {{ FreightDetails.CN_IGST_RATE }}
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    {{ FreightDetails?.CN_IGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b>GRAND TOTAL</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    <b>{{ CNMain?.CN_TOTAL_TOTAL | number : "1.2-2" }}</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div
+                    style="
+                      background-color: #fff799;
+                      text-align: center;
+                      padding: 0.9rem;
+                    "
+                  >
+                    <b>Package Weight</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.9rem">
+                    <b>POD</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.9rem">
+                    <b>CN No.:</b> {{ CNMain.CN_CN_NO }}
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div style="padding: 0.5rem"><b>In Words:</b> {{ GTOTAL }}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div
+                    style="background-color: #fff799; font-size: 10px; padding: 1rem"
+                  >
+                    <b>ACTUAL WEIGHTS (KGS)</b>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    {{ CNMain.CN_ACTUAL_WEIGHT }}
+                  </div>
+                </td>
+                <td>
+                  <div
+                    style="background-color: #fff799; font-size: 10px; padding: 0.5rem"
+                  >
+                    <b>CHARGED WEIGHTS (KGS)</b>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    {{ CNMain?.WEIGHT | number : "1.2-2" }}
+                  </div>
+                </td>
+                <td colspan="4" rowspan="4" style="text-align: left">
+                  <div style="padding: 1rem">
+                    Shipment Acknowledge By Consignee: <br />
+                    <label class="container">Good Condition </label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                    Remarks If Any <u>{{ CNMain.CN_REMARKS }}</u> <br />
+                    <br />
+                    <br />
+                    Signature & Seal of the Company: <br />
+                    <span class="float-right text-justify"
+                      >Date: {{ CNMain.CNDATE }}</span
+                    >
+                    <br />
+                    Name:<span class="float-right text-justify">Time: 2.03.15</span>
+                    <br />
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 1rem"
+                  >
+                    Payment
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" rowspan="4">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <p class="text-justify" style="word-wrap: break-word">
+                        "I/ We have carefully checked and verified the contents of this
+                        docket and hereby agree to the tersms and conditions set out on
+                        the reverse of this docket and digitized version available
+                        online at our website and also declare that the content of the
+                        waybill/e-waybill are true and correct. The"TO PAY" Freight has
+                        my/our consent and will be paid along with the applicable
+                        service charges by the receiver at the time of delivery."
+                      </p>
+                    </div>
+                    <div class="col-md-2 img-center_detail">
+                      <img
+                        src="../../../../../../assets/tncQr.png"
+                        width="70px"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div style="background-color: #fff799; padding: 2.2rem">
+                    Mode Of Payment
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="container">cash</label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="container">DD</label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="">Online Transfer</label><br />
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div class="img-center">
+                    <img
+                      src="../../../../../../assets/qrcode.png"
+                      width="50px"
+                      alt=""
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" rowspan="3">
+                  <div class="col" style="background-color: #fff799; padding: 0.5rem">
+                    <b>FOR OM LOGISTICS LTD.</b> <br />
+                    <br />
+                    <br />
+                    <br />
+                  </div>
+        
+                  <div class="col text-right" style="background-color: #fff799">
+                    <b>BUSINESS PARTNER CODE & SIGN</b>
+                  </div>
+                </td>
+              </tr>
+              <tr></tr>
+              <tr>
+                <td colspan="4">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 1.5rem"
+                  >
+                    <b>
+                      GENERAL INFORMATION<br />
+                      This is not a GST Invoice. For Tax Invoice contact to our
+                      branch.</b
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="13">
+                  <div>
+                    <div class="row">
+                      <div class="col">
+                        <label class="float-left">
+                          CIN NO: U63002DL1999PLC101942
+                        </label>
+                      </div>
+                      <div class="col text-justify">
+                        <label>CONSIGNOR COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>POD COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>CONSIGNEE COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                      </div>
+                      <div class="col">
+                        <label class="float-right">PAN NO: AAACO4716C </label>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        
+        <div class="page-break">
+          <h2>CONSIGNEE COPY</h2>
+        </div>
+        
+        <div class="card" style="align-items: center; border: none">
+          <img src="../../../../../../assets/retail_logo.png" width="200px" alt="" />
+        </div>
+        <div class="containers">
+          <table class="table table-bordereded table-sm">
+            <thead class="text-center">
+              <tr>
+                <th rowspan="3" colspan="2" class="img-center">
+                  <div style="background-color: #fff799; padding: 0.8rem">
+                    <img
+                      src="../../../../../../assets/logo10.png"
+                      width="180px"
+                      alt=""
+                    />
+                  </div>
+                </th>
+                <th colspan="3">
+                  <div style="background-color: #fff799; padding: 5px">
+                    CORPORATE OFFICE
+                  </div>
+                </th>
+        
+                <th colspan="3">
+                  <div style="background-color: #fff799; padding: 5px">
+                    CONSIGNMENT NOTE
+                  </div>
+                </th>
+        
+                <th colspan="5">
+                  <div style="background-color: #fff799; padding: 5px">
+                    TRANSPORTER ID: 88AAACO4716C1ZV
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="3" rowspan="2">
+                  <div>
+                    <b> 130, Punjabi Bagh (T.C) Ring Road</b><br />
+                    <b> New Delhi-110035</b><br />
+                    <b>Phone: </b> 011-45970200<br />
+                    <b>FAX:</b> 011-283165533<br />
+                    <b>Email:</b> omgroup@omlogistics.co.in
+                  </div>
+                </th>
+                <th colspan="3" rowspan="2">
+                  <div class="img-center" style="margin: 0">
+                    <ngx-barcode
+                      [bc-value]="FreightDetails.CN_CN_NO"
+                      [bc-width]="width"
+                      [bc-height]="height"
+                      [bc-display-value]="true"
+                    ></ngx-barcode>
+                    
+                  </div>
+                </th>
+                <th colspan="3">
+                  <div>FROM: {{ CNMain.SOURCE }}</div>
+                </th>
+                <th colspan="4">
+                  <div>DATE: {{ CNMain.CNDATE }}</div>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="3">
+                  <div>TO: {{ CNMain.DESTINATION }}</div>
+                </th>
+                <th colspan="4">
+                  <div>TIME: 12.40.25 PM</div>
+                </th>
+              </tr>
+        
+              <tr>
+                <th colspan="3">
+                  <div style="background-color: #fff799">BOOKING MODE</div>
+                </th>
+                <th colspan="3">
+                  <div style="background-color: #fff799">
+                    SPECIAL DELIVERY INSTRUCTIONS
+                  </div>
+                </th>
+                <th colspan="2">
+                  <div style="background-color: #fff799">
+                    <label class="container"> AT OWNER'S RISK </label>
+                  </div>
+                </th>
+                <th colspan="5">
+                  <div style="background-color: #fff799">
+                    <label class="container">FREIGHT MODE </label>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td>
+                  <div>
+                    <label class="container">SURFACE</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_TPTR_MODE_NAME === 'Surface' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span><br />
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">AIR</label> <br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="CNMain.CN_TPTR_MODE_NAME === 'Air' ? true : null"
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">TRAIN</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_TPTR_MODE_NAME === 'Train' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">COD</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'COD' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">G.D_DLV</label>
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'Godown' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">DACC</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'Door' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+        
+                <td colspan="2">
+                  <div>
+                    <b>Subject to Delhi Jurisdiction only</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>
+                    <label class="container">PAID</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_FREIGHT_PAID_NAME === 'PREPAID' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>
+                    <label class="container"> FOD_/_TO_PAY</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO PAY' ||
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO BILL(CNR)' ||
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO BILL(CNE)'
+                          ? true
+                          : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                
+                <td rowspan="8" colspan="3" class="consignor_consiee">
+                  <div class="row">
+                    <div class="shrinkss" style="background-color: #fff799">
+                      <p>
+                        <b
+                          >S <br />
+                          H <br />
+                          I <br />
+                          P <br />
+                          P <br />
+                          E <br />
+                          R</b
+                        >
+                      </p>
+                    </div>
+                    <div class="col sideline">
+                      <div class="row">
+                        <div class="col">
+                          Consignor Code: <br />
+                          Name: <br />
+                          Address <br />
+                          City Pincode<br />
+                          Phone No.<br />
+                          GST No.<br />
+                        </div>
+                        <div class="col">
+                          {{ CNMain.CONSIGNOR }}
+                          {{ CNMain.CONSIGNOR }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+        
+                <td rowspan="8" colspan="5" class="sideline">
+                  <div class="row">
+                    <div class="shrinkss" style="background-color: #fff799">
+                      <p>
+                        <b
+                          >R <br />
+                          E <br />
+                          C <br />
+                          E <br />
+                          I <br />
+                          V <br />
+                          E <br />
+                          R</b
+                        >
+                      </p>
+                    </div>
+                    <div class="col sideline">
+                      <div class="row">
+                        <div class="col">
+                          Consignor Code: <br />
+                          Name: <br />
+                          Address <br />
+                          City Pincode<br />
+                          Phone No.<br />
+                          GST No.<br />
+                        </div>
+                        <div class="col">
+                          {{ CNMain.CONSIGNEE }}
+                          {{ CNMain.CONSIGNEE }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> FREIGHT DETAILS</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    <b> Rs</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>Freight Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_RATE_PER_KG_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>F.O.V Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_FOV_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>CN Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">200.00</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>Fuel Surcharge</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_SURCHARGE_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>ODA Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>FOD/Topay Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="3">
+                  <div>Handling Charges (Special / Floor)</div>
+                </td>
+                <td class="text-center" colspan="2"></td>
+              </tr>
+              <tr>
+                <td colspan="8" class="text-center">
+                  <div style="background-color: #fff799; padding: 7px">
+                    <b>Package Information</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>VAS/Special Delivery/Detention Charges</div>
+                </td>
+        
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+              <tr class="text-center">
+                <td colspan="1">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice No
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice Date
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice Value
+                  </div>
+                </td>
+                <td colspan="4">
+                  <div
+                    style="
+                      background-color: #fff799;
+                      text-align: center;
+                      padding-left: 0;
+                      padding-right: 0;
+                    "
+                  >
+                    <b>Packing Type</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>Other (COD/FOD)</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_COD_OTHER }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_INVOICE_NO }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="1" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_INVOICE_DATE }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_NET_VALUE }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="4" class="text-center">
+                  <div>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'CRTN_BOX' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      C/B
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'WOODEN_BOX' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      W/C
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'BAG' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      BAG
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'PALLET' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      PALLET
+                    </label>
+                    <label class="container">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                      Drum
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'OTHER' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      OTHER
+                    </label>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> SUB TOTAL</b>
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    <b> {{ FreightDetails?.CN_TOTAL | number : "1.2-2" }}</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div class="row">
+                    <div class="col">EWB No.: {{ InvoiceMain[0]?.EWAY_BILL }}</div>
+        
+                    <div class="col">
+                      Valid: {{ InvoiceMain[1]?.EWAY_BILL_VALID_DATE }}
+                    </div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.8rem">
+                    <b>MATERIAL DESCRIPTION</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ InvoiceMain[0]?.CN_ITEM_DESCRIPT }}
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>SGST@ {{ FreightDetails.CN_SGST_RATE }}</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails?.CN_SGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="2">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 0.5rem"
+                  >
+                    <b>Dimension Of Boxes</b><br />
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.CN_CFT_UNIT === 'INCHES' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      (Inch)
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.CN_CFT_UNIT === 'CENTI METER' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      (cm)
+                    </label>
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b>1 CFT =</b>
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div class="text-center">8 Kg</div>
+                </td>
+                <td colspan="4" class="text-center">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> COD Details</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>CGST@ {{ FreightDetails.CN_CGST_RATE }}</div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    {{ FreightDetails?.CN_CGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="2" rowspan="2">
+                  <div style="padding: 0.5rem">
+                    L B H = BOXES {{ InvoiceMain[0]?.CN_LENGTH }} x
+                    {{ InvoiceMain[0]?.CN_WIDTH }} x {{ InvoiceMain[0]?.CN_HEIGHT }}
+                  </div>
+                </td>
+                <td colspan="1" rowspan="2">
+                  <div style="background-color: #fff799; padding: 1.8rem">
+                    <b>TOTAL NO. OF PKG.</b>
+                  </div>
+                </td>
+                <td colspan="1" rowspan="2">
+                  <div class="text-center">
+                    {{ CNMain.PKG }}
+                  </div>
+                </td>
+                <td colspan="4" rowspan="2">
+                  <div style="padding: 0.5rem">
+                    COD RS.:<br />
+                    Bank Name: <br />
+                    BANK Account No.: <br />
+                    NEFT / RTGS Details:
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="padding: 0.5rem 0.5rem 0.5rem 0">
+                    IGST@ {{ FreightDetails.CN_IGST_RATE }}
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    {{ FreightDetails?.CN_IGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b>GRAND TOTAL</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    <b>{{ CNMain?.CN_TOTAL_TOTAL | number : "1.2-2" }}</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div
+                    style="
+                      background-color: #fff799;
+                      text-align: center;
+                      padding: 0.9rem;
+                    "
+                  >
+                    <b>Package Weight</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.9rem">
+                    <b>POD</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.9rem">
+                    <b>CN No.:</b> {{ CNMain.CN_CN_NO }}
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div style="padding: 0.5rem"><b>In Words:</b> {{ GTOTAL }}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div
+                    style="background-color: #fff799; font-size: 10px; padding: 1rem"
+                  >
+                    <b>ACTUAL WEIGHTS (KGS)</b>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    {{ CNMain.CN_ACTUAL_WEIGHT }}
+                  </div>
+                </td>
+                <td>
+                  <div
+                    style="background-color: #fff799; font-size: 10px; padding: 0.5rem"
+                  >
+                    <b>CHARGED WEIGHTS (KGS)</b>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    {{ CNMain?.WEIGHT | number : "1.2-2" }}
+                  </div>
+                </td>
+                <td colspan="4" rowspan="4" style="text-align: left">
+                  <div style="padding: 1rem">
+                    Shipment Acknowledge By Consignee: <br />
+                    <label class="container">Good Condition </label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                    Remarks If Any <u>{{ CNMain.CN_REMARKS }}</u> <br />
+                    <br />
+                    <br />
+                    Signature & Seal of the Company: <br />
+                    <span class="float-right text-justify"
+                      >Date: {{ CNMain.CNDATE }}</span
+                    >
+                    <br />
+                    Name:<span class="float-right text-justify">Time: 2.03.15</span>
+                    <br />
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 1rem"
+                  >
+                    Payment
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" rowspan="4">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <p class="text-justify" style="word-wrap: break-word">
+                        "I/ We have carefully checked and verified the contents of this
+                        docket and hereby agree to the tersms and conditions set out on
+                        the reverse of this docket and digitized version available
+                        online at our website and also declare that the content of the
+                        waybill/e-waybill are true and correct. The"TO PAY" Freight has
+                        my/our consent and will be paid along with the applicable
+                        service charges by the receiver at the time of delivery."
+                      </p>
+                    </div>
+                    <div class="col-md-2 img-center_detail">
+                      <img
+                        src="../../../../../../assets/tncQr.png"
+                        width="70px"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div style="background-color: #fff799; padding: 2.2rem">
+                    Mode Of Payment
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="container">cash</label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="container">DD</label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="">Online Transfer</label><br />
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div class="img-center">
+                    <img
+                      src="../../../../../../assets/qrcode.png"
+                      width="50px"
+                      alt=""
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" rowspan="3">
+                  <div class="col" style="background-color: #fff799; padding: 0.5rem">
+                    <b>FOR OM LOGISTICS LTD.</b> <br />
+                    <br />
+                    <br />
+                    <br />
+                  </div>
+        
+                  <div class="col text-right" style="background-color: #fff799">
+                    <b>BUSINESS PARTNER CODE & SIGN</b>
+                  </div>
+                </td>
+              </tr>
+              <tr></tr>
+              <tr>
+                <td colspan="4">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 1.5rem"
+                  >
+                    <b>
+                      GENERAL INFORMATION<br />
+                      This is not a GST Invoice. For Tax Invoice contact to our
+                      branch.</b
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="13">
+                  <div>
+                    <div class="row">
+                      <div class="col">
+                        <label class="float-left">
+                          CIN NO: U63002DL1999PLC101942
+                        </label>
+                      </div>
+                      <div class="col text-justify">
+                        <label>CONSIGNOR COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>POD COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>CONSIGNEE COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                      </div>
+                      <div class="col">
+                        <label class="float-right">PAN NO: AAACO4716C </label>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="page-break">
+          <h2>DRIVER COPY</h2>
+        </div>
+        
+        <div class="card" style="align-items: center; border: none">
+          <img src="../../../../../../assets/retail_logo.png" width="200px" alt="" />
+        </div>
+        <div class="containers">
+          <table class="table table-bordereded table-sm">
+            <thead class="text-center">
+              <tr>
+                <th rowspan="3" colspan="2" class="img-center">
+                  <div style="background-color: #fff799; padding: 0.8rem">
+                    <img
+                      src="../../../../../../assets/logo10.png"
+                      width="180px"
+                      alt=""
+                    />
+                  </div>
+                </th>
+                <th colspan="3">
+                  <div style="background-color: #fff799; padding: 5px">
+                    CORPORATE OFFICE
+                  </div>
+                </th>
+        
+                <th colspan="3">
+                  <div style="background-color: #fff799; padding: 5px">
+                    CONSIGNMENT NOTE
+                  </div>
+                </th>
+        
+                <th colspan="5">
+                  <div style="background-color: #fff799; padding: 5px">
+                    TRANSPORTER ID: 88AAACO4716C1ZV
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="3" rowspan="2">
+                  <div>
+                    <b> 130, Punjabi Bagh (T.C) Ring Road</b><br />
+                    <b> New Delhi-110035</b><br />
+                    <b>Phone: </b> 011-45970200<br />
+                    <b>FAX:</b> 011-283165533<br />
+                    <b>Email:</b> omgroup@omlogistics.co.in
+                  </div>
+                </th>
+                <th colspan="3" rowspan="2">
+                  <div class="img-center" style="margin: 0">
+                    <ngx-barcode
+                      [bc-value]="FreightDetails.CN_CN_NO"
+                      [bc-width]="width"
+                      [bc-height]="height"
+                      [bc-display-value]="true"
+                    ></ngx-barcode>
+        
+                  </div>
+                </th>
+                <th colspan="3">
+                  <div>FROM: {{ CNMain.SOURCE }}</div>
+                </th>
+                <th colspan="4">
+                  <div>DATE: {{ CNMain.CNDATE }}</div>
+                </th>
+              </tr>
+              <tr>
+                <th colspan="3">
+                  <div>TO: {{ CNMain.DESTINATION }}</div>
+                </th>
+                <th colspan="4">
+                  <div>TIME: 12.40.25 PM</div>
+                </th>
+              </tr>
+        
+              <tr>
+                <th colspan="3">
+                  <div style="background-color: #fff799">BOOKING MODE</div>
+                </th>
+                <th colspan="3">
+                  <div style="background-color: #fff799">
+                    SPECIAL DELIVERY INSTRUCTIONS
+                  </div>
+                </th>
+                <th colspan="2">
+                  <div style="background-color: #fff799">
+                    <label class="container"> AT OWNER'S RISK </label>
+                  </div>
+                </th>
+                <th colspan="5">
+                  <div style="background-color: #fff799">
+                    <label class="container">FREIGHT MODE </label>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td>
+                  <div>
+                    <label class="container">SURFACE</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_TPTR_MODE_NAME === 'Surface' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span><br />
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">AIR</label> <br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="CNMain.CN_TPTR_MODE_NAME === 'Air' ? true : null"
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">TRAIN</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_TPTR_MODE_NAME === 'Train' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">COD</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'COD' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">G.D_DLV</label>
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'Godown' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <label class="container">DACC</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_DELIVERY_POINT_NAME === 'Door' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+        
+                <td colspan="2">
+                  <div>
+                    <b>Subject to Delhi Jurisdiction only</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>
+                    <label class="container">PAID</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_FREIGHT_PAID_NAME === 'PREPAID' ? true : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>
+                    <label class="container"> FOD_/_TO_PAY</label><br />
+                    <input
+                      type="checkbox"
+                      [attr.checked]="
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO PAY' ||
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO BILL(CNR)' ||
+                        CNMain.CN_FREIGHT_PAID_NAME === 'TO BILL(CNE)'
+                          ? true
+                          : null
+                      "
+                    />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td rowspan="8" colspan="3" class="consignor_consiee">
+                  <div class="row">
+                    <div class="shrinkss" style="background-color: #fff799">
+                      <p>
+                        <b
+                          >S <br />
+                          H <br />
+                          I <br />
+                          P <br />
+                          P <br />
+                          E <br />
+                          R</b
+                        >
+                      </p>
+                    </div>
+                    <div class="col sideline">
+                      <div class="row">
+                        <div class="col">
+                          Consignor Code: <br />
+                          Name: <br />
+                          Address <br />
+                          City Pincode<br />
+                          Phone No.<br />
+                          GST No.<br />
+                        </div>
+                        <div class="col">
+                          {{ CNMain.CONSIGNOR }}
+                          {{ CNMain.CONSIGNOR }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+        
+                <td rowspan="8" colspan="5" class="sideline">
+                  <div class="row">
+                    <div class="shrinkss" style="background-color: #fff799">
+                      <p>
+                        <b
+                          >R <br />
+                          E <br />
+                          C <br />
+                          E <br />
+                          I <br />
+                          V <br />
+                          E <br />
+                          R</b
+                        >
+                      </p>
+                    </div>
+                    <div class="col sideline">
+                      <div class="row">
+                        <div class="col">
+                          Consignor Code: <br />
+                          Name: <br />
+                          Address <br />
+                          City Pincode<br />
+                          Phone No.<br />
+                          GST No.<br />
+                        </div>
+                        <div class="col">
+                          {{ CNMain.CONSIGNEE }}
+                          {{ CNMain.CONSIGNEE }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> FREIGHT DETAILS</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    <b> Rs</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>Freight Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_RATE_PER_KG_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>F.O.V Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_FOV_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>CN Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">200.00</div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>Fuel Surcharge</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_SURCHARGE_A }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>ODA Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>FOD/Topay Charges</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="3">
+                  <div>Handling Charges (Special / Floor)</div>
+                </td>
+                <td class="text-center" colspan="2"></td>
+              </tr>
+              <tr>
+                <td colspan="8" class="text-center">
+                  <div style="background-color: #fff799; padding: 7px">
+                    <b>Package Information</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>VAS/Special Delivery/Detention Charges</div>
+                </td>
+        
+                <td colspan="2">
+                  <div class="text-center"></div>
+                </td>
+              </tr>
+              <tr class="text-center">
+                <td colspan="1">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice No
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice Date
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div
+                    style="background-color: #fff799; padding-left: 0; padding-right: 0"
+                  >
+                    Invoice Value
+                  </div>
+                </td>
+                <td colspan="4">
+                  <div
+                    style="
+                      background-color: #fff799;
+                      text-align: center;
+                      padding-left: 0;
+                      padding-right: 0;
+                    "
+                  >
+                    <b>Packing Type</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>Other (COD/FOD)</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails.CN_COD_OTHER }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_INVOICE_NO }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="1" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_INVOICE_DATE }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    <span *ngFor="let item of InvoiceMain">
+                      {{ item?.CN_NET_VALUE }}<br />
+                    </span>
+                  </div>
+                </td>
+                <td colspan="4" class="text-center">
+                  <div>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'CRTN_BOX' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      C/B
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'WOODEN_BOX' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      W/C
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'BAG' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      BAG
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'PALLET' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      PALLET
+                    </label>
+                    <label class="container">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                      Drum
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.PKG_TYPS === 'OTHER' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      OTHER
+                    </label>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> SUB TOTAL</b>
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    <b> {{ FreightDetails?.CN_TOTAL | number : "1.2-2" }}</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div class="row">
+                    <div class="col">EWB No.: {{ InvoiceMain[0]?.EWAY_BILL }}</div>
+        
+                    <div class="col">
+                      Valid: {{ InvoiceMain[1]?.EWAY_BILL_VALID_DATE }}
+                    </div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.8rem">
+                    <b>MATERIAL DESCRIPTION</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ InvoiceMain[0]?.CN_ITEM_DESCRIPT }}
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>SGST@ {{ FreightDetails.CN_SGST_RATE }}</div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    {{ FreightDetails?.CN_SGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="2">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 0.5rem"
+                  >
+                    <b>Dimension Of Boxes</b><br />
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.CN_CFT_UNIT === 'INCHES' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      (Inch)
+                    </label>
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [attr.checked]="
+                          InvoiceMain[0]?.CN_CFT_UNIT === 'CENTI METER' ? true : null
+                        "
+                      />
+                      <span class="checkmark"></span>
+                      (cm)
+                    </label>
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b>1 CFT =</b>
+                  </div>
+                </td>
+                <td colspan="1">
+                  <div class="text-center">8 Kg</div>
+                </td>
+                <td colspan="4" class="text-center">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b> COD Details</b>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div>CGST@ {{ FreightDetails.CN_CGST_RATE }}</div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    {{ FreightDetails?.CN_CGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+        
+              <tr>
+                <td colspan="2" rowspan="2">
+                  <div style="padding: 0.5rem">
+                    L B H = BOXES {{ InvoiceMain[0]?.CN_LENGTH }} x
+                    {{ InvoiceMain[0]?.CN_WIDTH }} x {{ InvoiceMain[0]?.CN_HEIGHT }}
+                  </div>
+                </td>
+                <td colspan="1" rowspan="2">
+                  <div style="background-color: #fff799; padding: 1.8rem">
+                    <b>TOTAL NO. OF PKG.</b>
+                  </div>
+                </td>
+                <td colspan="1" rowspan="2">
+                  <div class="text-center">
+                    {{ CNMain.PKG }}
+                  </div>
+                </td>
+                <td colspan="4" rowspan="2">
+                  <div style="padding: 0.5rem">
+                    COD RS.:<br />
+                    Bank Name: <br />
+                    BANK Account No.: <br />
+                    NEFT / RTGS Details:
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div style="padding: 0.5rem 0.5rem 0.5rem 0">
+                    IGST@ {{ FreightDetails.CN_IGST_RATE }}
+                  </div>
+                </td>
+                <td colspan="2" class="text-center">
+                  <div>
+                    {{ FreightDetails?.CN_IGST_AMT | number : "1.2-2" }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div style="background-color: #fff799; padding: 1rem">
+                    <b>GRAND TOTAL</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center">
+                    <b>{{ CNMain?.CN_TOTAL_TOTAL | number : "1.2-2" }}</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div
+                    style="
+                      background-color: #fff799;
+                      text-align: center;
+                      padding: 0.9rem;
+                    "
+                  >
+                    <b>Package Weight</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.9rem">
+                    <b>POD</b>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div style="background-color: #fff799; padding: 0.9rem">
+                    <b>CN No.:</b> {{ CNMain.CN_CN_NO }}
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div style="padding: 0.5rem"><b>In Words:</b> {{ GTOTAL }}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div
+                    style="background-color: #fff799; font-size: 10px; padding: 1rem"
+                  >
+                    <b>ACTUAL WEIGHTS (KGS)</b>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    {{ CNMain.CN_ACTUAL_WEIGHT }}
+                  </div>
+                </td>
+                <td>
+                  <div
+                    style="background-color: #fff799; font-size: 10px; padding: 0.5rem"
+                  >
+                    <b>CHARGED WEIGHTS (KGS)</b>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    {{ CNMain?.WEIGHT | number : "1.2-2" }}
+                  </div>
+                </td>
+                <td colspan="4" rowspan="4" style="text-align: left">
+                  <div style="padding: 1rem">
+                    Shipment Acknowledge By Consignee: <br />
+                    <label class="container">Good Condition </label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                    Remarks If Any <u>{{ CNMain.CN_REMARKS }}</u> <br />
+                    <br />
+                    <br />
+                    Signature & Seal of the Company: <br />
+                    <span class="float-right text-justify"
+                      >Date: {{ CNMain.CNDATE }}</span
+                    >
+                    <br />
+                    Name:<span class="float-right text-justify">Time: 2.03.15</span>
+                    <br />
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 1rem"
+                  >
+                    Payment
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" rowspan="4">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <p class="text-justify" style="word-wrap: break-word">
+                        "I/ We have carefully checked and verified the contents of this
+                        docket and hereby agree to the tersms and conditions set out on
+                        the reverse of this docket and digitized version available
+                        online at our website and also declare that the content of the
+                        waybill/e-waybill are true and correct. The"TO PAY" Freight has
+                        my/our consent and will be paid along with the applicable
+                        service charges by the receiver at the time of delivery."
+                      </p>
+                    </div>
+                    <div class="col-md-2 img-center_detail">
+                      <img
+                        src="../../../../../../assets/tncQr.png"
+                        width="70px"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div style="background-color: #fff799; padding: 2.2rem">
+                    Mode Of Payment
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="container">cash</label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="container">DD</label>
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div>
+                    <label class="">Online Transfer</label><br />
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </div>
+                </td>
+                <td>
+                  <div class="img-center">
+                    <img
+                      src="../../../../../../assets/qrcode.png"
+                      width="50px"
+                      alt=""
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" rowspan="3">
+                  <div class="col" style="background-color: #fff799; padding: 0.5rem">
+                    <b>FOR OM LOGISTICS LTD.</b> <br />
+                    <br />
+                    <br />
+                    <br />
+                  </div>
+        
+                  <div class="col text-right" style="background-color: #fff799">
+                    <b>BUSINESS PARTNER CODE & SIGN</b>
+                  </div>
+                </td>
+              </tr>
+              <tr></tr>
+              <tr>
+                <td colspan="4">
+                  <div
+                    class="text-center"
+                    style="background-color: #fff799; padding: 1.5rem"
+                  >
+                    <b>
+                      GENERAL INFORMATION<br />
+                      This is not a GST Invoice. For Tax Invoice contact to our
+                      branch.</b
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="13">
+                  <div>
+                    <div class="row">
+                      <div class="col">
+                        <label class="float-left">
+                          CIN NO: U63002DL1999PLC101942
+                        </label>
+                      </div>
+                      <div class="col text-justify">
+                        <label>CONSIGNOR COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>POD COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                        &nbsp;&nbsp;&nbsp;
+                        <label>CONSIGNEE COPY </label>
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                      </div>
+                      <div class="col">
+                        <label class="float-right">PAN NO: AAACO4716C </label>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        
+        
+        </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+
+</head>
+<body>
+    <section>
+        <div class="container" >
+            
+        <!-- <h1 style="color:rgb(143, 140, 140)">(Order Draft)</h1> -->
+        <div class="upper-section">
+          <p><b>Outlet: </b> PACE HOSPITAL</p> 
+          <p><b>Type: </b> HOSPITAL/NH</p>
+          <p><b>Contact:</b> <span id="ph_no"></span></p>
+          <!-- <p><b>Total & GST:</b> <span id="gst"></span> <b id="item_gst"> 178 = 22378.37</b> </p> -->
+        </div>
+        <hr > 
+        <h5 class="text-center table-primary"><b>Activity Summery</b></h5>
+        <div class="card text-center" style="border:1px solid rgb(109, 175, 241);box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.332);">
+        <table class="table table-sm" style="border-radius: 5px;">
+          
+          <thead class="t" style="background-color: rgb(109, 175, 241);color: aliceblue;">
+            <tr>
+              <th scope="col">
+                Customer Name<br>
+                SKU Name
+            </th>
+              <th scope="col">
+                Remarks<br>
+                Follow up
+            </th>
+              
+            </tr>
+          </thead>
+          <tbody id="tableupper">
+            <!-- <tr >
+              <td>DIGITAL THERMOMETER</td>
+              <td>100.00</td>
+              <td>23</td>
+              <td>2300.00</td>
+            </tr> -->
+           
+            <!-- <tr>
+              <th colspan="2">Total</th>
+              <td>175</td>
+              <th>4266.24</th>
+            </tr> -->
+        </tbody>
+        </table>
+        <p><b>Applied Scheme: </b> You Saved <b>500</b> INR</p>
+        <p><b>Final Amount: 1766.88</b></p>
+    </div>
+    <!-- <h5 class="text-center">Return</h5>
+    <div class="card text-center" style="border:1px solid rgb(109, 175, 241);box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.332);">
+        <table class="table table-sm " >
+          
+          <thead class="t" style="background-color: rgb(109, 175, 241);color: aliceblue;">
+            <tr>
+              <th scope="col">SKU Name</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Reson</th>
+              <th scope="col">Amt</th> 
+              <th scope="col">GST%</th>
+              <th scope="col">Net Amt</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+            
+        </table>
+        <p style="padding-left: 5px;"><b>Scheme: </b> For Total Quantity <b>24</b> Scheme is 500</p>
+    </div> -->
+        
+        
+      </div>
+      </section>
+      
+</body>
+<script>
+
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "orderid": "3405"
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://romsons-demo.omlogistics.co.in/pdfprint",requestOptions).then(
+  res => {
+    res.json().then(
+      data => {
+        console.log(data);
+        if (data.data.length > 0) {
+
+          var temp = "";
+          data.data.forEach((itemData) => {
+            temp += "<tr>";
+            temp += "<td>" + itemData.item_id +"<br>"+itemData.order_amt + "</td>";
+            temp += "<td>" + itemData.item_price_unit +"<br>"+ itemData.order_gst_amt +"<br>"+ itemData.order_gst_amt + "</td></tr>";
+            // temp += "<td>" + itemData.item_qty + "</td>";
+            // temp += "<td>" + itemData.order_amt + "</td>";
+            // temp += "<td>" + itemData.order_gst_amt +'%'+ "</td>";
+            // temp += "<td>" + itemData.total_quantity + "</td></tr>";
+        });
+            // temp += "<tr>";
+            // temp += `<th>` + "Total" + "</th>"
+            // temp += "<td>" + "" + "</td></tr>"
+            // temp += "<td>" + "" + "</td>"
+            // temp += "<td>" + "88" + "</td>"
+            // temp += "<td>" + "2266.88" + "</td>"
+            // temp += "<th>" + "4266.24" + "</th></tr>";
+
+          var temp1 = "";
+          data.data.forEach((itemData1) => {
+            temp1 += "<tr>";
+            temp1 += "<td>" + itemData1.item_id + "</td>";
+            temp1 += "<td>" + itemData1.item_price_unit + "</td>";
+            temp1 += "<td>" + itemData1.order_amt + "</td>";
+            temp1 += "<td>" + itemData1.item_price_unit + "</td>";
+            temp1 += "<td>" + itemData1.order_amt +'%'+ "</td>";
+            temp1 += "<td>" + itemData1.total_quantity + "</td></tr>";
+          });
+          temp1 += "<tr>";
+            temp1 += `<th>` + "Total" + "</th>"
+            temp1 += "<td>" + "" + "</td>"
+            temp1 += "<td>" + "" + "</td>"
+            temp1 += "<td>" + "" + "</td>"
+            temp1 += "<td>" + "" + "</td>"
+            temp1 += "<th>" + "4266.24" + "</th></tr>";
+        //   document.getElementById('data').innerHTML = temp1;
+          document.getElementById('tableupper').innerHTML = temp;
+
+            
+        //   document.getElementById('ph_no').innerHTML = temp;
+          document.getElementById("ph_no").innerText = data.data[0].phone_no;
+          document.getElementById("gst").innerText = data.data[0].order_gst_amt;
+          document.getElementById("item_gst").innerText = data.data[0].item_gst;
+        }
+      }
+    )
+  }
+)
+
+</script>
+</html>

@@ -1,0 +1,266 @@
+<table class="table-bordered m-2">
+    <thead class="text-center">
+    <tr>
+     <th></th>
+     <th >PO DETAILS</th>
+     <th colspan="3">LR/POD</th>
+     <th colspan="2">PICK UP LOCATION</th>
+     <th colspan="2">DELIVERY LOCATION</th>
+     <th colspan="3">QUANTITY AND WEIGHT</th>
+     <th colspan="1">QTY AND WEIGHT</th>
+     <th colspan="1">AMOUNT CALCULATION</th>
+     <th colspan="1">AMOUNT CALCULATION</th>
+     <th colspan="1">AMOUNT CALCULATION</th>
+     <th colspan="10">AMOUNT CALCULATION</th>
+     <th colspan="2">AMOUNT CALCULATION</th>
+     <th colspan="2">DATE</th>
+     <th colspan="2">CUSTOMER DETAILS</th>
+  
+    </tr>
+  </thead>
+  <thead class="text-center">
+    <tr>
+     <th rowspan="2">S.NO.</th>
+     <th rowspan="2">VENDOR CODE(TRANSPORTER)</th>
+     <th rowspan="2">PO NUMBER(TRANSPORTER)</th>
+     <th rowspan="2">SERVICE NUMBER/SERVICE CODE</th>
+     <th rowspan="2">PO RATE</th>
+     <th rowspan="2">TML GATE PASS NO</th>
+     <th rowspan="2">DOCKET/LR NO</th>
+     <th rowspan="2">TRANSPORT MODE(SURFACE/AIR)</th>
+     <th rowspan="2">PICK UP LOCATION PLANT CODE</th>
+     <th rowspan="2">PICK UP LOCATION PIN CODE</th>
+     <th rowspan="2">DESTINATION(TO CITY NAME)</th>
+     <th rowspan="2">DELIVERY LOCATION PIN CODE</th>
+     <th rowspan="2">QTY/NO OF CASES</th>
+     <th rowspan="2">ACTUAL CONSIGNMENT WEIGHT</th>
+     <th rowspan="2">VOLUMATRIC WEIGHT</th>
+     <th rowspan="2">CHARGEBLE WEIGHT</th>
+     <th rowspan="2">BASIC AMOUNT</th>
+     <th rowspan="2">MINIMUM WEIGHT CHS(PTL)</th>
+     <th rowspan="2">BASIC AMOUNT</th>
+  
+     <th colspan="2">ODA CHARGES</th>
+     <th colspan="2">WAY BILL/DOCKET CHS</th>
+     <th colspan="2">GREEN TAX CHS</th>
+     <th colspan="2">FUEL SURCHARGE</th>
+     <th colspan="2">FUEL INDEXING</th>
+  
+     <th rowspan="2">ADD CHARGES TOTAL</th>
+     <th rowspan="2">FINAL BASIC TAXABLE AMOUNT</th>
+     <th rowspan="2">PICKUP DATE </th>
+     <th rowspan="2">ACTUAL DELIVERY DATE</th>
+     <th rowspan="2">CUSTOMER CODE</th>
+     <th rowspan="2">PIN CODE</th>
+    </tr>
+  
+  
+  <tr class="text-center">
+    <th>Service Number/
+      Service Code</th>
+    <th>ODA Charges
+      (PTL)</th>
+    <th>Service Number/
+      Service Code</th>
+    <th>Way Bill/Docket  Chs
+      (PTL/FTL)</th>
+    <th>Service Number/
+      Service Code</th>
+    <th>Green Tax Chs (PTL/FTL)</th>
+    <th>Service Number/
+      Service Code</th>
+    <th>Fuel Surcharge
+      (PTL) </th>
+    <th>Service Number/
+      Service Code</th>
+    <th>Fuel Indexing
+      (PTL)</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="text-center">
+    <th>O</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>Auto</th>
+    <th>Auto</th>
+    <th>O</th>
+    <th>Auto</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>O</th>
+    <th>Auto</th>
+    <th>Auto</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+    <th>M</th>
+     </tr>
+  
+     <tr class="text-center"*ngFor="let data of Exceldata; let i = index;">
+      <td>{{i+1}}</td>
+      <td></td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>Auto</td>
+      <td>Auto</td>
+      <td>O</td>
+      <td>Auto</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>O</td>
+      <td>Auto</td>
+      <td>Auto</td>
+      <td>{{data.Date}}</td>
+      <td>080060</td>
+      <td>080060</td>
+      <td>080060</td>
+       </tr>
+    </tbody>
+   </table>
+  
+  
+   <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th colspan="1">ODA CHARGES</th>
+        <th rowspan="2">S.NO.</th>
+        <th rowspan="2">VENDOR CODE(TRANSPORTER)</th>
+        <th colspan="1">PO NUMBER(TRANSPORTER)</th>
+        <th colspan="1">ODA CHARGES</th>
+        <th colspan="1">SERVICE NUMBER/SERVICE CODE</th>
+        <th colspan="1">ODA CHARGES</th>
+        <th colspan="1">SERVICE NUMBER/SERVICE CODE</th>
+        <th colspan="1">ODA CHARGES</th>
+        <th colspan="1">SERVICE NUMBER/SERVICE CODE</th>
+        <th colspan="1">ODA CHARGES</th>
+        <th colspan="1">SERVICE NUMBER/SERVICE CODE</th>
+  
+      </tr>
+      <tr class="text-center">
+        <th>
+          Service Number/
+          Service Code
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+  
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+        <th>
+          ODA Charges
+          (PTL)
+        </th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          ToTAL:
+        </td>
+        <td>@fat</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table>
